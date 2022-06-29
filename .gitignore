@@ -130,3 +130,9 @@ dmypy.json
 
 # VS Code
 .vscode/
+
+# And then some..
+samples/
+demo/
+demos/
+examples/
