@@ -1,0 +1,6 @@
+#! /bin/bash
+
+export FLASK_APP=dpp
+export FLASK_ENV=dpp # Assuming the environment is exists.
+
+flask run

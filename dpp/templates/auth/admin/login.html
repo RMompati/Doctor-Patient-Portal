@@ -1,0 +1,36 @@
+{% extends 'admin.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}Admin Log In {% endblock %}
+
+{% block content %}
+    <section id="container">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4" style="align-items: center; padding-top: 200px;">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <h1 style="text-align: center;">Admin Login Form</h1>
+                    </header>
+                    <div class="panel-body">
+                        <div class="login-wrap">
+                            {% with errors = get_flashed_messages(category_filter=['error']) %}
+                                {% if errors %}
+                                    {% for msg in errors %}
+                                        <h5 style="text-align: center;color: red;">{{msg}}</h5>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+                            {{form.hidden_tag()}}
+                            {{form.csrf_token}}
+                            {{ wtf.quick_form(form) }}
+                        </div>
+                        <br>
+                        <a href="{{url_for('home.home_dpp')}}" class="btn btn-primary btn-lg btn-block">Home</a>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </section>
+{% endblock %}

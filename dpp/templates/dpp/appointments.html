@@ -1,0 +1,71 @@
+{% extends 'dpp.html' %}
+{% block names %}{{username}}{% endblock %}
+
+{% block styles %}
+	
+    <script type="text/javascript">
+    
+        $(document).ready(function(){
+			
+            var data = JSON.parse('{{data | tojson}}')
+            
+			appointments = []
+			for( var i = 0; i < data.length; i++){
+
+				var title = String(data[i].title);
+                var all_day = (String(data[i].allDay) == 'true' || String(data[i].allDay) == 'True' ) ? true:false;
+                
+				var start_date = new Date(Number(data[i].start.y), Number(data[i].start.m - 1), Number(data[i].start.d), Number(data[i].start.h), Number(data[i].start.M), Number(data[i].start.s));
+				var end_date = new Date(Number(data[i].end.y), Number(data[i].end.m - 1), Number(data[i].end.d), Number(data[i].end.h), Number(data[i].end.M), Number(data[i].end.s));
+				event = {
+					title: title,
+					start: start_date,
+					end: end_date,
+					allDay: all_day
+				};
+				appointments.push(event);
+			}
+			$('#cal').fullCalendar({
+                theme: false,
+                header:{
+                    left:'prev, next today',
+                    center: 'title',
+                    right:'month,agendaWeek,agendaDay'
+                },
+                editable: true,
+                events: appointments
+            });
+            
+        });
+    </script>
+    <style type='text/css'>
+
+        body {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+            }
+    
+        #cal {
+            width: 900px;
+            margin: 0 auto;
+            }
+    
+    </style>
+{% endblock %}
+{% block content %}
+	
+	<div class="row">
+		<div class="col-lg-12 portlets">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h2><strong>My Appointments</strong></h2>
+				</div>
+			</div><br><br><br>
+			<div class="panel-body">
+				<div id='cal'></div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

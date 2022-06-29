@@ -1,0 +1,72 @@
+{% import 'bootstrap/wtf.html' as wtf%}
+{% import 'bootstrap/utils.html' as utils%}
+{% extends 'base.html' %}
+{% block title %}Doctor Sigin{% endblock %}
+{% block styles %}
+ <!-- Bootstrap CSS -->
+  <link href="{{url_for('static', filename='custom/css/bootstrap.min.css')}}" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="{{url_for('static', filename='custom/css/bootstrap-theme.css')}}" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="{{url_for('static', filename='custom/css/elegant-icons-style.css')}}" rel="stylesheet" />
+  <link href="{{url_for('static', filename='custom/css/font-awesome.min.css')}}" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="{{url_for('static', filename='custom/css/style.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename='custom/css/style-responsive.css')}}" rel="stylesheet" />
+
+{% endblock %}
+{% block content %}
+    <section id="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <section class="panel" style="align-items: center;">
+                    <header class="panel-heading">
+                        <h1 style="text-align: center;">Doctor Login Form</h1>
+                    </header>
+                    <div class="panel-body">
+                        <div class="form">
+                            <form action="/auth/signin/doctor" class="" method="POST">
+                                {% with errors = get_flashed_messages(category_filter=['error']) %}
+                                    {% if errors %}
+                                        {% for msg in errors %}
+                                            <h5 style="text-align: center;color: red;">{{msg}}</h5>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                                {{form.hidden_tag()}}
+                                {{form.csrf_token}}
+                                
+                                {{ wtf.form_field(form.email) }}
+                                {{ wtf.form_field(form.password) }}
+                                <label class="checkbox">
+                                    <span class="pull-right"><a href="{{url_for('auth.reset_request')}}">Forgot password?</a></span>
+                                </label>
+                                {{ wtf.form_field(form.submit_) }}
+                                {{ wtf.form_field(form.register) }}
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+
+  <!-- javascripts -->
+  <script src="{{url_for('static', filename='custom/js/jquery.js')}}"></script>
+  <script src="{{url_for('static', filename='custom/js/bootstrap.min.js')}}"></script>
+  <!-- nice scroll -->
+  <script src="{{url_for('static', filename='custom/js/jquery.scrollTo.min.js')}}"></script>
+  <script src="{{url_for('static', filename='custom/js/jquery.nicescroll.js')}}" type="text/javascript"></script>
+  <!-- jquery validate js -->
+  <script type="text/javascript" src="{{url_for('static', filename='custom/js/jquery.validate.min.js')}}"></script>
+
+  <!-- custom form validation script for this page-->
+  <script src="{{url_for('static', filename='custom/js/form-validation-script.js')}}"></script>
+  <!--custome script for all page-->
+  <script src="{{url_for('static', filename='custom/js/scripts.js')}}"></script>
+{% endblock %}

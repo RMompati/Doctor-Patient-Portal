@@ -1,0 +1,137 @@
+{% extends 'dpp.html' %}
+
+{% block names %}{{username}}{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 col-md-12">
+        <div class="panel pane-default">
+            <div class="panel-heading">
+                <h2><i class="fa fa-flag-o red"></i><strong>Registered Patients</strong></h2>
+                <div class="panel-actions">
+                    <a href="#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+                    <a href="#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
+                    <a href="#" class="btn-close"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table bootstrap-datatable countries">
+                    <thead>
+                        <tr>
+                            <th>Province</th>
+                            <th>Patients</th>
+                            <th>Online</th>
+                            <th>Satisfaction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Eastern Cape</td>
+                            <td>10</td>
+                            <td>4</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                        <span class="sr-only">6/10</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr><tr>
+                            <td>Free State</td>
+                            <td>30</td>
+                            <td>6</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%;">
+                                        <span class="sr-only">6.5/10</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr><tr>
+                            <td>Gauteng</td>
+                            <td>50</td>
+                            <td>11</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
+                                        <span class="sr-only">4.5/10</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr><tr>
+                            <td>Kwazulu-Natal</td>
+                            <td>5</td>
+                            <td>0</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+                                        <span class="sr-only">1/10</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr><tr>
+                            <td>Limpopo</td>
+                            <td>53</td>
+                            <td>7</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100" style="width: 69%;">
+                                        <span class="sr-only">6.9/10</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr><tr>
+                            <td>Mpumalanga</td>
+                            <td>41</td>
+                            <td>9</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;">
+                                        <span class="sr-only">7.8/10</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr><tr>
+                            <td>Northern Cape</td>
+                            <td>20</td>
+                            <td>0</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="61" aria-valuemin="0" aria-valuemax="100" style="width: 61%;">
+                                        <span class="sr-only">6.1/10</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr><tr>
+                            <td>North West</td>
+                            <td>39</td>
+                            <td>7</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100" style="width: 51%;">
+                                        <span class="sr-only">5.1/10</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr><tr>
+                            <td>Western Cape</td>
+                            <td>100</td>
+                            <td>23</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100" style="width: 81%;">
+                                        <span class="sr-only">8.1/10</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

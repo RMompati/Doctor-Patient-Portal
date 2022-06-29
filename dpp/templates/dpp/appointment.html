@@ -1,0 +1,109 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+{% extends 'dpp.html' %}
+{% block names %}{{username}}{% endblock %}
+
+{% block styles %}
+	
+    <script type="text/javascript">
+    
+        $(document).ready(function(){
+			
+			var data = JSON.parse('{{data | tojson}}')
+            
+            schedule = []
+            
+			if(data.length){
+                for( var i = 0; i < data.length; i++){
+                    var title = String(data[i].title);
+                    var all_day = (String(data[i].allDay) == 'true' || String(data[i].allDay) == 'True' ) ? true:false;
+                    var start_date = new Date(Number(data[i].start.y), Number(data[i].start.m - 1), Number(data[i].start.d), Number(data[i].start.h), Number(data[i].start.M), Number(data[i].start.s));
+                    var end_date = new Date(Number(data[i].end.y), Number(data[i].end.m - 1), Number(data[i].end.d), Number(data[i].end.h), Number(data[i].end.M), Number(data[i].end.s));
+                    event = {
+                        title: title,
+                        start: start_date,
+                        end: end_date,
+                        allDay: all_day
+                    };
+                    schedule.push(event);
+                }
+            }
+            $('#cal').fullCalendar({
+                    theme: false,
+                    header:{
+                        left:'prev, next today',
+                        center: 'title',
+                        right:'month,agendaWeek,agendaDay'
+                    },
+                    editable: true,
+                    events: schedule
+                });
+            
+        });
+    </script>
+    <!-- Date time files.. please work..-->
+    <link href="{{url_for('static', filename='dt/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 portlets">
+            <section class="panel">
+                <header class="panel-heading">
+                    <h1 style="text-align: center;">Book an Appointment</h1>
+                </header>
+                <div class="panel-body">
+                    <div class="form">
+                        <h3 class="sub_s"> Schedule Confirmation </h3>
+                        <form action="/dpp/create/appointment" method="POST" class="">
+                        
+                            {{form.hidden_tag()}}
+                            {{ wtf.form_field(confirm.speciality) }}
+                            {{ wtf.form_field(confirm.update, extra_classes="btn btn-primary btn-lg btn-block") }}
+                            {{ wtf.form_field(confirm.doctor) }}
+                            {{ wtf.form_field(confirm.update_schedule, extra_classes="btn btn-primary btn-lg btn-block") }}
+                        </form>
+                        <h3 class="sub_s"> Booking </h3>
+                        <form action="/dpp/create/appointment" method="POST" class="">
+                            {% with errors = get_flashed_messages(category_filter=['error']) %}
+                                {% if errors %}
+                                    {% for msg in errors %}
+                                        <h5 style="text-align: center;color: red;">{{msg}}</h5>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+                            {{form.hidden_tag()}}
+                            {{ wtf.form_field(form.speciality) }}
+                            {{ wtf.form_field(form.doctor) }}
+                            {{ wtf.form_field(form.title) }}
+
+                            <div class="controls input-append date form_datetime" data-date="2020-01-01T08:25:00Z" data-date-format="yyyy-mm-dd hh:ii:ss">
+                            
+                                {{ wtf.form_field(form.start) }}
+                                <span class="add-on"><i class="icon-th"></i></span>
+                                
+                            </div>
+                            <div class="controls input-append date form_datetime" data-date="2020-01-01T08:25:00Z" data-date-format="yyyy-mm-dd hh:ii:ss">
+    
+                                {{ wtf.form_field(form.end) }}
+                                <span class="add-on"><i class="icon-th"></i></span>
+                                
+                            </div>
+                            {{ wtf.form_field(form.create) }}
+                            {{ wtf.form_field(form.cancel) }}
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-6 portlets">
+			<div class="panel">
+				<div class="panel-heading">
+					<h1 style="text-align: center;">{% if dr %} Dr. {{dr}}'s Schedule {% else %} Doctor's Schedule {% endif %}</h1>
+				</div>
+			</div><br><br><br>
+			<div class="panel-body">
+				<div id='cal'></div>
+			</div>
+        </div>
+    </div>
+   
+{% endblock %}

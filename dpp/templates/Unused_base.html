@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicons -->
+	<link href="{{url_for('static', filename='img/favicon.png')}}" rel="icon">
+	<link href="{{url_for('static', filename='img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+	<!-- Bootstrap CSS File -->
+	<link href="{{url_for('static', filename='lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+	<!-- Libraries CSS Files -->
+	<link href="{{url_for('static', filename='lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+	<link href="{{url_for('static', filename='lib/animate/animate.min.css')}}" rel="stylesheet">
+
+	<!-- Main Stylesheet File -->
+	<link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+
+</head>
+<body>
+	<header id="header" class="header-fixed">
+	    <div class="container">
+
+	      <div id="logo" class="pull-left">
+	        <!--<a href="#hero"><img src="img/GU.jpg" alt="" title=""></a>
+	         Uncomment below if you prefer to use a text logo -->
+	        <h1><a href="#hero">Doctor Patient Portal</a></h1>
+	      </div>
+
+	      <nav id="nav-menu-container">
+	        <ul class="nav-menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+			  <li class="menu-active"><a href="#hero">Home</a></li>
+			  <li><a href="#about">About DPP</a></li>
+			  <li class="menu-has-children"><a href="#" class="sf-with-ul">Register</a>
+				<ul style="display: none;">
+					<li><a href="#">As Doctor</a></li>
+					<li><a href="#">As Patient</a></li>
+					<li><a href="#">As Admin</a></li>
+				</ul>
+			  </li>
+	          <li class="menu-has-children"><a href="#" class="sf-with-ul">Log In</a>
+				<ul style="display: none;">
+					<li><a href="#">As Doctor</a></li>
+					<li><a href="#">As Patient</a></li>
+					<li><a href="#">As Admin</a></li>
+				</ul>
+			  </li>
+	          <li><a href="#contact">Contact Us</a></li>
+	        </ul>
+	      </nav><!-- #nav-menu-container -->
+	    </div>
+     </header><!-- #header -->
+     
+    <!--==========================
+        Hero Section
+    ============================-->
+    <section id="hero">
+        <div class="hero-container">
+        <h1>Doctor Patient Portal</h1>
+        <a href="#about" class="btn-get-started">Get Started</a>
+        </div>
+    </section><!-- #hero -->
+    
+	<section class="main">
+		{% block content %}
+		{% endblock %}
+	</section>
+
+	<!-- JavaScript Libraries -->
+    <script src="{{url_for('static', filename='lib/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='lib/jquery/jquery-migrate.min.js')}}"></script>
+    <script src="{{url_for('static', filename='lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static', filename='lib/easing/easing.min.js')}}"></script>
+    <script src="{{url_for('static', filename='')}}lib/wow/wow.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+
+    <script src="{{url_for('static', filename='lib/waypoints/waypoints.min.js')}}"></script>
+    <script src="{{url_for('static', filename='lib/counterup/counterup.min.js')}}"></script>
+    <script src="{{url_for('static', filename='lib/superfish/hoverIntent.js')}}"></script>
+    <script src="{{url_for('static', filename='lib/superfish/superfish.min.js')}}"></script>
+
+    <!-- Contact Form JavaScript File -->
+    <script src="{{url_for('static', filename='contactform/contactform.js')}}"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>
