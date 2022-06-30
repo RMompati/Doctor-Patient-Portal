@@ -12,7 +12,7 @@ Setup
 - Create a virtual environment: ```dpp```
 - Activate the virtual environment.
 - Install the requirements: ```pip install -r requirements.txt```
-- Run: ```./unix-run``` or ```.\windows-run```
+- Run: ```./unix-run``` or ```.\windows-run.bat```
 -Enjoy...
 
 And uh... This probably offends a few lincences...
