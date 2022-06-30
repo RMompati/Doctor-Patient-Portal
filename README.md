@@ -1,4 +1,4 @@
-# Patient Doctor Online Portal
+# Doctor Patient (Online) Portal
 
 Find more in ***docs/***
 
